@@ -20,6 +20,8 @@
 
         public bool IsHMO { get; set; }
 
-        
+        public DateTime ArrivalDate { get; set; }
+
+
     }
 }

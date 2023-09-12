@@ -1,9 +1,9 @@
 ﻿namespace HospitalManagementSystem.Models
 {
-    public class Services
+    public class ServiceList
     {
         public int Id { get; set; }
 
-        
+        public string? ServiceOfferings { get; set; }
     }
 }
