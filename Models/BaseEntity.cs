@@ -14,9 +14,12 @@
 
         public int SugarLevel { get; set; }
 
-        public string Address { get; set; }
+        public string? Address { get; set; }
 
         public bool OnMedication { get; set; }
 
+        public bool IsHMO { get; set; }
+
+        
     }
 }
