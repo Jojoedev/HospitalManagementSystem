@@ -5,7 +5,7 @@
         public int Id { get; set; }
         public string? FirstName { get; set; }
         public string?  LastName { get; set; }
-        public DateOnly DOB { get; set; }
+        public DateTime DOB { get; set; }
 
         public int Weight { get; set; }
         public float BodyTemperature { get; set; }
@@ -16,11 +16,13 @@
 
         public string? Address { get; set; }
 
-        public bool OnMedication { get; set; }
+        public bool onMedication { get; set; }
+        public bool isNewPatient { get; set; }
 
-        public bool IsHMO { get; set; }
+        public bool isHMO { get; set; }
 
         public DateTime ArrivalDate { get; set; }
+        public DateTime ExitDate { get; set; }
 
 
     }
