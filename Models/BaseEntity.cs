@@ -19,8 +19,12 @@
         public bool isHMO { get; set; }
         
         public DateTime ArrivalDate { get; set; }
-       
+        public string? Complaints { get; set; }
+        public string? DrNotes { get; set; }
+        public string? TestResult { get; set; }
+        public string? DrRemark { get; set; }
 
 
     }
+    //Add three properties, 1 for Patient's complains noted by Dr,2- Dr recommendation, 3 Lab test result, 4-Prescription. 
 }
