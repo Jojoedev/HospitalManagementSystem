@@ -16,13 +16,10 @@
 
         public string? Address { get; set; }
 
-        public bool onMedication { get; set; }
-        public bool isNewPatient { get; set; }
-
         public bool isHMO { get; set; }
-
+        
         public DateTime ArrivalDate { get; set; }
-        public DateTime ExitDate { get; set; }
+       
 
 
     }

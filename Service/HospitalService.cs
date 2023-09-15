@@ -34,5 +34,10 @@ namespace HospitalManagementSystem.Service
         {
             return _Context.Genders.ToList();
         }
+
+        public void lookUp()
+        {
+            _Context.Genders.ToLookup(x => x.Sex);
+        }
     }
 }

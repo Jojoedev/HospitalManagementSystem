@@ -12,8 +12,8 @@ namespace HospitalManagementSystem.AppDbContext
 
         public DbSet<Gender> Genders { get; set; }
         public DbSet<Patient> Patients { get; set; }
-        public DbSet<ServiceList> ServiceLists { get; set; }
-
+        public DbSet<PatientType> PatientTypes { get; set; }
+       
         /*protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Gender>().HasData(new Gender()

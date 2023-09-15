@@ -11,6 +11,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 
 builder.Services.AddTransient<IHospitalnterface, HospitalService>();
 builder.Services.AddTransient<IPatientInterface, IPatientService>();
+builder.Services.AddTransient<IPatientType, IPatientTypeService>();
 
 var app = builder.Build();
 
@@ -31,6 +32,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Gender}/{action=GetList}/{id?}");
+    pattern: "{controller=Patient}/{action=Index}/{id?}");
 
 app.Run();

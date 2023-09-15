@@ -9,5 +9,6 @@ namespace HospitalManagementSystem.Interface
         Gender GetGender(int? id);
 
          void Create(Gender gender);
+         void lookUp();
     }
 }
