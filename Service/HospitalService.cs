@@ -12,29 +12,7 @@ namespace HospitalManagementSystem.Service
             _Context = context;
         }
 
-        public void Create(Gender gender)
-        {
-            _Context.Genders.Add(gender);
-            _Context.SaveChanges();
-
-           
-        }
-
-        public Gender GetGender(int? id)
-        {
-            var gender = _Context.Genders.Where(x => x.Id == id).FirstOrDefault();
-            if (gender != null)
-            {
-                return gender;
-            }
-            return null;
-        }
-
-        public IEnumerable<Gender> GetList()
-        {
-            return _Context.Genders.ToList();
-        }
-
+       
         public void lookUp()
         {
             _Context.Genders.ToLookup(x => x.Sex);

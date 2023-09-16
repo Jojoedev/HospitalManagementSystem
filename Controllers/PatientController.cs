@@ -8,32 +8,40 @@ namespace HospitalManagementSystem.Controllers
 {
     public class PatientController : Controller
     {
-        private readonly IPatientInterface _patientInterface;
-        private readonly IHospitalnterface _hospitalnterface;
+        private readonly IGenericInterface<Patient> _genericpatient;
+        private readonly IGenericInterface<PatientType> _genericPatientType;
+        private readonly IGenericInterface<Gender> _genericGender;
+        
         private readonly IPatientType _patientType;
-        public PatientController(IPatientInterface patientInterface, IHospitalnterface hospitalnterface, IPatientType patientType)
+        private readonly IHospitalnterface _hospitalnterface;
+
+        public PatientController(IGenericInterface<Patient> genericpatient, 
+            IGenericInterface<PatientType> genericPatientType,
+            IGenericInterface<Gender> genericGender, IPatientType patientType, 
+            IHospitalnterface hospitalnterface)
         {
-            _patientInterface = patientInterface;
-            _hospitalnterface = hospitalnterface;
+            _genericpatient = genericpatient;
+            _genericPatientType = genericPatientType;
+            _genericGender = genericGender;
             _patientType = patientType;
+            _hospitalnterface = hospitalnterface;
             
         }
 
         public SelectList genderList { get; set; }
         public SelectList patientType { get; set; }
 
+
         [HttpGet]
         public ActionResult Index()
         {
             _hospitalnterface.lookUp();
             _patientType.lookUp();
-            var patientList = _patientInterface.GetList();
-                                        
+            var patientList = _genericpatient.GetList();      
 
             return View(patientList);
         }
-
-        
+                
         public IActionResult Create()
         {
             LoadData();
@@ -46,15 +54,15 @@ namespace HospitalManagementSystem.Controllers
             patient.ArrivalDate = DateTime.Now;
             if (ModelState.IsValid)
             {
-                _patientInterface.Create(patient);
+                _genericpatient.Create(patient);
             }
             return RedirectToAction("Index");
         }
 
         public void LoadData()
         {
-            ViewBag.genderList = new SelectList(_hospitalnterface.GetList(), "Id", "Sex");
-            ViewBag.patientType = new SelectList(_patientType.GetList(), "Id", "Type");
+            ViewBag.genderList = new SelectList(_genericGender.GetList(), "Id", "Sex");
+            ViewBag.patientType = new SelectList(_genericPatientType.GetList(), "Id", "Type");
         }
     }
 }

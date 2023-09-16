@@ -6,16 +6,16 @@ namespace HospitalManagementSystem.Controllers
 {
     public class PatientTypeController : Controller
     {
-        private readonly IPatientType _patientType;
-        public PatientTypeController(IPatientType patientType)
+        private readonly IGenericInterface<PatientType> _genericInterface;
+        public PatientTypeController(IGenericInterface<PatientType> genericInterface)
         {
-            _patientType = patientType;
+            _genericInterface = genericInterface;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            var list = _patientType.GetList();
+            var list = _genericInterface.GetList();
             return View(list);
         }
 
@@ -25,14 +25,12 @@ namespace HospitalManagementSystem.Controllers
             return View();
         }
 
-
-
         [HttpPost]
         public ActionResult Create(PatientType patientType)
         {
             if (ModelState.IsValid)
             {
-                _patientType.Create(patientType);
+                _genericInterface.Create(patientType);
                 return RedirectToAction("Index");
             }
             return View();

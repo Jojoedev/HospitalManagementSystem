@@ -7,23 +7,23 @@ namespace HospitalManagementSystem.Controllers
     
     public class GenderController : Controller
     {
-        private readonly IHospitalnterface _hospitalInterface;
-        public GenderController(IHospitalnterface hospitalInterface)
+        private readonly IGenericInterface<Gender> _genericInterface;
+        public GenderController(IGenericInterface<Gender> genericInterface)
         {
-            _hospitalInterface = hospitalInterface;
+            _genericInterface = genericInterface;
         }
 
         [HttpGet]
         public ActionResult<Gender> GetList()
         { 
-            var genderList = _hospitalInterface.GetList();
+            var genderList = _genericInterface.GetList();
             return View(genderList);
         }
 
         [HttpGet("id")]
         public ActionResult<Gender> Details(int? id)
         {
-            var getGender = _hospitalInterface.GetGender(id);
+            var getGender = _genericInterface.GetOne(id);
             return View(getGender);
         }
 
@@ -38,7 +38,7 @@ namespace HospitalManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                _hospitalInterface.Create(gender);
+                _genericInterface.Create(gender);
                 
             }
         return RedirectToAction("GetList");
