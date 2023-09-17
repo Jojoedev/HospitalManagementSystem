@@ -1,0 +1,28 @@
+﻿@model Microsoft.AspNetCore.Identity.IdentityRole
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+
+<hr />
+<div class="row">
+    <form asp-action="Create">
+        <div>
+            <label asp-for="@Model.Name" class="control-label"></label>
+            <input asp-for="@Model.Name" class="form-control">
+        </div>
+        <input type="submit" class="btn btn-primary" name="submit" />
+    </form>
+
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

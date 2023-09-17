@@ -1,9 +1,11 @@
-﻿using HospitalManagementSystem.Models;
+﻿using HospitalManagementSystem.Identity;
+using HospitalManagementSystem.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace HospitalManagementSystem.AppDbContext
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options)
         {
