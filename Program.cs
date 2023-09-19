@@ -28,8 +28,10 @@ builder.Services.AddScoped<IPatientType, IPatientTypeService>();
 builder.Services.AddScoped<IGenericInterface<Patient>, GenericService<Patient>>();
 builder.Services.AddScoped<IGenericInterface<Gender>, GenericService<Gender>>();
 builder.Services.AddScoped<IGenericInterface<PatientType>, GenericService<PatientType>>();
+builder.Services.AddRazorPages(options => options.Conventions.AuthorizeFolder("/"));
 
 
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 

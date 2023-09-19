@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HospitalManagementSystem.Areas.Identity.Pages.Account
 {
@@ -31,13 +32,16 @@ namespace HospitalManagementSystem.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            RoleManager<IdentityRole> roleManager
+            )
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -45,6 +49,7 @@ namespace HospitalManagementSystem.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _roleManager = roleManager; 
         }
 
         /// <summary>
@@ -115,14 +120,16 @@ namespace HospitalManagementSystem.Areas.Identity.Pages.Account
 
             [Required]
             [Display(Name ="Role Name")]
-            public string RoleName { get; set; }
+            public string Name { get; set; }
 
 
         }
 
+        public SelectList roleName { get; set; }
 
         public async Task OnGetAsync(string returnUrl = null)
         {
+            roleName = new SelectList(_roleManager.Roles.ToList(), "Name", "Name");
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
@@ -138,6 +145,7 @@ namespace HospitalManagementSystem.Areas.Identity.Pages.Account
                     LastName = Input.LastName,
                     DateOfBirth = Input.DateOfBirth,
                     Email = Input.Email };
+                var role =  _roleManager.FindByNameAsync(Input.Name).Result;
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
@@ -146,6 +154,9 @@ namespace HospitalManagementSystem.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                    await _userManager.AddToRoleAsync(user, role.Name);
+                    
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

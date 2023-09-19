@@ -1,10 +1,11 @@
 ﻿using HospitalManagementSystem.Interface;
 using HospitalManagementSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HospitalManagementSystem.Controllers
 {
-    
+    [Authorize(Roles ="Nurse, IT Manager")]
     public class GenderController : Controller
     {
         private readonly IGenericInterface<Gender> _genericInterface;

@@ -1,11 +1,13 @@
 ﻿using HospitalManagementSystem.AppDbContext;
 using HospitalManagementSystem.Interface;
 using HospitalManagementSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HospitalManagementSystem.Controllers
 {
+    [Authorize(Roles = "IT Manager")]
     public class PatientController : Controller
     {
         private readonly IGenericInterface<Patient> _genericpatient;
