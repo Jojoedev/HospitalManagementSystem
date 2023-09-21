@@ -30,8 +30,8 @@ namespace HospitalManagementSystem.Controllers
 
         }
 
-        public SelectList genderList { get; set; }
-        public SelectList patientType { get; set; }
+        public SelectList GenderList { get; set; }
+        public SelectList GatientType { get; set; }
 
 
         [HttpGet]
@@ -63,20 +63,43 @@ namespace HospitalManagementSystem.Controllers
 
         public void LoadData()
         {
-            ViewBag.genderList = new SelectList(_genericGender.GetList(), "Id", "Sex");
-            ViewBag.patientType = new SelectList(_genericPatientType.GetList(), "Id", "Type");
+            ViewBag.GenderList = new SelectList(_genericGender.GetList(), "Id", "Sex");
+            ViewBag.PatientType = new SelectList(_genericPatientType.GetList(), "Id", "Type");
         }
 
-        [HttpPut]
-        public ActionResult Edit(int id, Patient patient)
+
+        
+        public ActionResult Edit(int id)
         {
-            var obj = _genericpatient.GetOne(id);
+            LoadData();
+            var patient = _genericpatient.GetOne(id);
+           
+
+            if (patient == null)
+            {
+                return NotFound();
+            }
+           
+            return View(patient);
+
+        }
+
+
+        [HttpPost]
+        public ActionResult Edit(Patient patient)
+        {
+            var obj = _genericpatient.GetOne(patient.Id);
             if(obj  == null)
             {
                 return NotFound();
             }
-            _genericpatient.Update(id, patient);
-            return NoContent();
+            if (ModelState.IsValid)
+            {
+                _genericpatient.Update(patient.Id, patient);
+                return NoContent();
+            }
+            return RedirectToAction("Index");
+           
         }
 
     }
