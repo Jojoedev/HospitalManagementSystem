@@ -32,5 +32,7 @@ namespace HospitalManagementSystem.Service
         {
             return _Context.Patients.ToList();
         }
+
+        
     }
 }

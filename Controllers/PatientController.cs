@@ -13,13 +13,13 @@ namespace HospitalManagementSystem.Controllers
         private readonly IGenericInterface<Patient> _genericpatient;
         private readonly IGenericInterface<PatientType> _genericPatientType;
         private readonly IGenericInterface<Gender> _genericGender;
-        
+
         private readonly IPatientType _patientType;
         private readonly IHospitalnterface _hospitalnterface;
 
-        public PatientController(IGenericInterface<Patient> genericpatient, 
+        public PatientController(IGenericInterface<Patient> genericpatient,
             IGenericInterface<PatientType> genericPatientType,
-            IGenericInterface<Gender> genericGender, IPatientType patientType, 
+            IGenericInterface<Gender> genericGender, IPatientType patientType,
             IHospitalnterface hospitalnterface)
         {
             _genericpatient = genericpatient;
@@ -27,7 +27,7 @@ namespace HospitalManagementSystem.Controllers
             _genericGender = genericGender;
             _patientType = patientType;
             _hospitalnterface = hospitalnterface;
-            
+
         }
 
         public SelectList genderList { get; set; }
@@ -39,11 +39,11 @@ namespace HospitalManagementSystem.Controllers
         {
             _hospitalnterface.lookUp();
             _patientType.lookUp();
-            var patientList = _genericpatient.GetList();      
+            var patientList = _genericpatient.GetList();
 
             return View(patientList);
         }
-                
+
         public IActionResult Create()
         {
             LoadData();
@@ -66,5 +66,18 @@ namespace HospitalManagementSystem.Controllers
             ViewBag.genderList = new SelectList(_genericGender.GetList(), "Id", "Sex");
             ViewBag.patientType = new SelectList(_genericPatientType.GetList(), "Id", "Type");
         }
+
+        [HttpPut]
+        public ActionResult Edit(int id, Patient patient)
+        {
+            var obj = _genericpatient.GetOne(id);
+            if(obj  == null)
+            {
+                return NotFound();
+            }
+            _genericpatient.Update(id, patient);
+            return NoContent();
+        }
+
     }
 }

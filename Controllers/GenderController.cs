@@ -16,7 +16,7 @@ namespace HospitalManagementSystem.Controllers
 
         [HttpGet]
         public ActionResult<Gender> GetList()
-        { 
+        {
             var genderList = _genericInterface.GetList();
             return View(genderList);
         }
