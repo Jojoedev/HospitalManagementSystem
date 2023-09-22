@@ -1,11 +1,15 @@
-﻿namespace HospitalManagementSystem.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace HospitalManagementSystem.Models
 {
     public class Patient : BaseEntity
     {
 
+        [Display(Name = "Gender")]
         public int? GenderId { get; set; }
         public virtual Gender? Gender { get; set; }
 
+        [Display(Name="Type")]
         public int? PatientTypeId { get; set; }
         public virtual PatientType? PatientType { get; set; }
 

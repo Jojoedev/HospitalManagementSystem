@@ -239,6 +239,11 @@ C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\Ho
 C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\HospitalManagementSystem.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\HospitalManagementSystem.RazorAssemblyInfo.cache
 C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\HospitalManagementSystem.RazorAssemblyInfo.cs
+C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\staticwebassets\msbuild.HospitalManagementSystem.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\staticwebassets\msbuild.build.HospitalManagementSystem.props
+C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.HospitalManagementSystem.props
+C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.HospitalManagementSystem.props
+C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\staticwebassets.pack.json
 C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
@@ -250,8 +255,3 @@ C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\re
 C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\HospitalManagementSystem.pdb
 C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\HospitalManagementSystem.genruntimeconfig.cache
 C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\ref\HospitalManagementSystem.dll
-C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\staticwebassets\msbuild.HospitalManagementSystem.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\staticwebassets\msbuild.build.HospitalManagementSystem.props
-C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.HospitalManagementSystem.props
-C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.HospitalManagementSystem.props
-C:\Users\HP\Desktop\CSharp projects\HospitalManagementSystem\obj\Debug\net6.0\staticwebassets.pack.json

@@ -8,7 +8,7 @@
 
         void Create(TEntity entity);
 
-        void Update(int id,TEntity entity);
+        void Update(TEntity entity);
 
 
     }

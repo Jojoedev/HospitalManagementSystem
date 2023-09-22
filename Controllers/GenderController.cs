@@ -45,5 +45,8 @@ namespace HospitalManagementSystem.Controllers
         return RedirectToAction("GetList");
 
         }
+
+        
+
     }
 }

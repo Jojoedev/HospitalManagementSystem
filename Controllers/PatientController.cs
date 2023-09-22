@@ -67,9 +67,8 @@ namespace HospitalManagementSystem.Controllers
             ViewBag.PatientType = new SelectList(_genericPatientType.GetList(), "Id", "Type");
         }
 
-
-        
-        public ActionResult Edit(int id)
+               
+        /*public ActionResult Edit(int id)
         {
             LoadData();
             var patient = _genericpatient.GetOne(id);
@@ -84,8 +83,8 @@ namespace HospitalManagementSystem.Controllers
 
         }
 
-
-        [HttpPost]
+*/
+       /* [HttpPost]
         public ActionResult Edit(Patient patient)
         {
             var obj = _genericpatient.GetOne(patient.Id);
@@ -95,11 +94,45 @@ namespace HospitalManagementSystem.Controllers
             }
             if (ModelState.IsValid)
             {
-                _genericpatient.Update(patient.Id, patient);
+                _genericpatient.Update(patient);
                 return NoContent();
             }
             return RedirectToAction("Index");
            
+        }*/
+
+        public ActionResult Edit(int id)
+        {
+            LoadData();
+            var patient = _genericpatient.GetOne(id);
+            if(patient == null)
+            {
+                NotFound();
+            }
+            return View(patient);
+
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Patient patient)
+        {
+            if(ModelState.IsValid)
+            {
+                _genericpatient.Update(patient);
+                
+            }
+            return RedirectToAction("Index");
+
+        }
+
+        [HttpGet]
+        public ActionResult DrView()
+        {
+
+            _hospitalnterface.lookUp();
+            _patientType.lookUp();
+            var drViewList = _genericpatient.GetList();
+            return View(drViewList);
         }
 
     }

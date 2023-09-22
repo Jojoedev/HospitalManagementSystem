@@ -9,5 +9,7 @@ namespace HospitalManagementSystem.Interface
         Patient GetPatient(int? id);
 
         void Create(Patient patient);
+
+        void Update(Patient patient);
     }
 }

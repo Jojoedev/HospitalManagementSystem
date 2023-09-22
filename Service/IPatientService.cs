@@ -33,6 +33,10 @@ namespace HospitalManagementSystem.Service
             return _Context.Patients.ToList();
         }
 
-        
+        public void Update(Patient patient)
+        {
+            patient = GetPatient(patient.Id);
+            _Context.Patients.Update(patient);
+        }
     }
 }

@@ -24,12 +24,12 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 
-builder.Services.AddScoped<IHospitalnterface, HospitalService>();
-builder.Services.AddScoped<IPatientType, IPatientTypeService>();
+builder.Services.AddTransient<IHospitalnterface, HospitalService>();
+builder.Services.AddTransient<IPatientType, IPatientTypeService>();
 
-builder.Services.AddScoped<IGenericInterface<Patient>, GenericService<Patient>>();
-builder.Services.AddScoped<IGenericInterface<Gender>, GenericService<Gender>>();
-builder.Services.AddScoped<IGenericInterface<PatientType>, GenericService<PatientType>>();
+builder.Services.AddTransient<IGenericInterface<Patient>, GenericService<Patient>>();
+builder.Services.AddTransient<IGenericInterface<Gender>, GenericService<Gender>>();
+builder.Services.AddTransient<IGenericInterface<PatientType>, GenericService<PatientType>>();
 builder.Services.AddRazorPages(options => options.Conventions.AuthorizeFolder("/"));
 
 

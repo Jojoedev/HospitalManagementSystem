@@ -36,9 +36,8 @@ namespace HospitalManagementSystem.Service
             return entity;
         }
 
-        public void Update(int id, TEntity entity)
+        public void Update(TEntity entity)
         {
-             _database.Find(id);
             _database.Update(entity);
             _context.SaveChanges();    
             
