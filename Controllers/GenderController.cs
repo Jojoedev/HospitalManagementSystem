@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HospitalManagementSystem.Controllers
 {
-    [Authorize(Roles ="Nurse, IT Manager")]
+    [Authorize(Roles ="IT Manager")]
     public class GenderController : Controller
     {
         private readonly IGenericInterface<Gender> _genericInterface;

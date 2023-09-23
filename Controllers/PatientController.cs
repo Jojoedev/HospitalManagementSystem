@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HospitalManagementSystem.Controllers
 {
-    [Authorize(Roles = "IT Manager")]
+    [Authorize(Roles = "IT Manager, Nurse")]
     public class PatientController : Controller
     {
         private readonly IGenericInterface<Patient> _genericpatient;
@@ -30,8 +30,7 @@ namespace HospitalManagementSystem.Controllers
 
         }
 
-        public SelectList GenderList { get; set; }
-        public SelectList GatientType { get; set; }
+        
 
 
         [HttpGet]
@@ -61,46 +60,10 @@ namespace HospitalManagementSystem.Controllers
             return RedirectToAction("Index");
         }
 
-        public void LoadData()
-        {
-            ViewBag.GenderList = new SelectList(_genericGender.GetList(), "Id", "Sex");
-            ViewBag.PatientType = new SelectList(_genericPatientType.GetList(), "Id", "Type");
-        }
+       
+            
 
-               
-        /*public ActionResult Edit(int id)
-        {
-            LoadData();
-            var patient = _genericpatient.GetOne(id);
-           
-
-            if (patient == null)
-            {
-                return NotFound();
-            }
-           
-            return View(patient);
-
-        }
-
-*/
-       /* [HttpPost]
-        public ActionResult Edit(Patient patient)
-        {
-            var obj = _genericpatient.GetOne(patient.Id);
-            if(obj  == null)
-            {
-                return NotFound();
-            }
-            if (ModelState.IsValid)
-            {
-                _genericpatient.Update(patient);
-                return NoContent();
-            }
-            return RedirectToAction("Index");
-           
-        }*/
-
+        
         public ActionResult Edit(int id)
         {
             LoadData();
@@ -125,6 +88,34 @@ namespace HospitalManagementSystem.Controllers
 
         }
 
+        
+        /*public ActionResult EditNurse(int id)
+        {
+            LoadData();
+            var patient = _genericpatient.GetOne(id);
+            if (patient == null)
+            {
+                NotFound();
+            }
+            return View(patient);
+
+        }
+
+
+        [HttpPost]
+        public ActionResult EditNurse(Patient patient)
+        {
+            if (ModelState.IsValid)
+            {
+                _genericpatient.Update(patient);
+
+            }
+            return RedirectToAction("Index");
+
+        }
+*/
+
+        
         [HttpGet]
         public ActionResult DrView()
         {
@@ -135,5 +126,11 @@ namespace HospitalManagementSystem.Controllers
             return View(drViewList);
         }
 
+
+        public void LoadData()
+        {
+            ViewBag.GenderList = new SelectList(_genericGender.GetList(), "Id", "Sex");
+            ViewBag.PatientType = new SelectList(_genericPatientType.GetList(), "Id", "Type");
+        }
     }
 }

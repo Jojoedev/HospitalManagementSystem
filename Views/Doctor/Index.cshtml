@@ -13,14 +13,11 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.GenderId)
+                @Html.DisplayNameFor(model => model.Gender.Sex)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PatientTypeId)
+                @Html.DisplayNameFor(model => model.PatientType.Type)
             </th>
-           @* <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
             </th>
@@ -51,6 +48,18 @@
             <th>
                 @Html.DisplayNameFor(model => model.ArrivalDate)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Complaints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DrNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TestResult)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DrRemark)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -58,14 +67,11 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Gender.Sex)
+                @Html.DisplayFor(modelItem => item.Gender.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PatientType.Type)
+                @Html.DisplayFor(modelItem => item.PatientType.Id)
             </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
@@ -97,9 +103,21 @@
                 @Html.DisplayFor(modelItem => item.ArrivalDate)
             </td>
             <td>
-                @Html.ActionLink("EditNurse", "EditNurse", new { id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                @Html.DisplayFor(modelItem => item.Complaints)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DrNotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TestResult)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DrRemark)
+            </td>
+            <td>
+                <a asp-action="Review" asp-route-id="@item.Id">Review</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

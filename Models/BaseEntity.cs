@@ -14,12 +14,12 @@ namespace HospitalManagementSystem.Models
         public DateTime DOB { get; set; }
 
         public int Weight { get; set; }
-        [Display(Name = "B-Temp")]
+        [Display(Name = "Temp")]
         public float BodyTemperature { get; set; }
 
         public int Pulse { get; set; }
 
-        [Display(Name = "S-Level")]
+        [Display(Name = "Sugar")]
 
         public int SugarLevel { get; set; }
 

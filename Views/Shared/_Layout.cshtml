@@ -36,15 +36,16 @@
                          <a class="nav-link text-dark" asp-area="" asp-controller="PatientType" asp-action="Index">Class</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" text-dark"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" asp-area="" asp-controller="Patient" asp-action="DrView">Doctor</a>
+                            <a class="nav-link dropdown-toggle" text-dark"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" @* asp-area="" asp-controller="Patient" asp-action="DrView" *@>Doctor</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="Patient/DrView">General Dr</a>
-                                <a class="dropdown-item" href="#">Gynaecologist</a>
-                                <a class="dropdown-item" href="#">Dentist</a>
-                                <a class="dropdown-item" href="#">Others</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Doctor" asp-action="Index">General Dr</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Doctor" asp-action="Index">Gynaecologist</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Doctor" asp-action="Index">Dentist</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Doctor" asp-action="Index">Others</a>
                             </div>
 
                         </li>
+                        @* href="Patient/DrView" *@
                         
                         
                     </ul>
