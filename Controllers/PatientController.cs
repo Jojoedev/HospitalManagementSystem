@@ -60,9 +60,7 @@ namespace HospitalManagementSystem.Controllers
             return RedirectToAction("Index");
         }
 
-       
-            
-
+               
         
         public ActionResult Edit(int id)
         {

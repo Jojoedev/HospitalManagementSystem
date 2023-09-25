@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HospitalManagementSystem.Controllers
 {
-    [Authorize(Roles ="IT Manager, Doctor")]
+    [Authorize(Roles ="IT Manager, Doctor 1")]
     public class DoctorController : Controller
     {
         private readonly IGenericInterface<Patient> _patientGeneric;
@@ -45,6 +45,7 @@ namespace HospitalManagementSystem.Controllers
 
         public ActionResult Review(int id)
         {
+           LoadData();
             var patient = _patientGeneric.GetOne(id);
             if(patient == null)
             {
@@ -57,8 +58,11 @@ namespace HospitalManagementSystem.Controllers
         [HttpPost]
         public ActionResult Review(Patient patient)
         {
+
             if(ModelState.IsValid)
             {
+                _hospitalnterface.lookUp();
+                _patientType.lookUp();
                 _patientGeneric.Update(patient);
                // return RedirectToAction("Index");
             }
@@ -69,7 +73,7 @@ namespace HospitalManagementSystem.Controllers
         public void LoadData()
         {
             ViewBag.GenderList = new SelectList(_genderGeneric.GetList(), "Id", "Sex");
-            ViewBag.PatientType = new SelectList(_genderGeneric.GetList(), "Id", "Type");
+            ViewBag.PatientType = new SelectList(_patientTypeGeneric.GetList(), "Id", "Type");
         }
 
     }
