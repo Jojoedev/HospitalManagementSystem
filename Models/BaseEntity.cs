@@ -6,6 +6,9 @@ namespace HospitalManagementSystem.Models
     {
         public int Id { get; set; }
 
+        [Display(Name = "S/N")]
+        public int SerialNumber { get; set; }
+
         [Display(Name = "FName")]
         public string? FirstName { get; set; }
 
@@ -33,6 +36,7 @@ namespace HospitalManagementSystem.Models
         public string? DrNotes { get; set; }
         public string? TestResult { get; set; }
         public string? DrRemark { get; set; }
+        public string? NameOfDoctor { get; set; }
 
 
     }

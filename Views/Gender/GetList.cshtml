@@ -4,14 +4,14 @@
     ViewData["Title"] = "GetList";
 }
 
-<h1>GetList</h1>
+<h4>Gender List</h4>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-outline-primary">Create New</a>
 </p>
 
 
-<table class="table">
+<table class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>
@@ -35,7 +35,7 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.Id  }) |
                 @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                @Html.ActionLink("Delete", "Delete", new {  })
             </td>
         </tr>
 }

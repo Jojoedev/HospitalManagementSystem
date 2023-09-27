@@ -6,15 +6,20 @@
 
 <h3>Doctors' Page</h3>
 
-<p>
+@* <p>
     <a asp-action="Create">Create New</a>
-</p>
+</p> *@
+
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.SerialNumber)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Gender.Sex)
             </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.PatientType.Type)
             </th>
@@ -67,8 +72,12 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Gender.Sex)
+                @Html.DisplayFor(modelItem => item.SerialNumber)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender.Sex)
+                </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.PatientType.Type)
             </td>
@@ -115,9 +124,9 @@
                 @Html.DisplayFor(modelItem => item.DrRemark)
             </td>
             <td>
-                <a asp-action="Review" asp-route-id="@item.Id">Review</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Review" asp-route-id="@item.Id">Review</a> 
+                @* <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@
             </td>
         </tr>
 }

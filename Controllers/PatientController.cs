@@ -30,15 +30,15 @@ namespace HospitalManagementSystem.Controllers
 
         }
 
+        public int SerialNumber = 1;
         
-
-
         [HttpGet]
         public ActionResult Index()
         {
+            SerialNumber++;
             _hospitalnterface.lookUp();
             _patientType.lookUp();
-            var patientList = _genericpatient.GetList();
+            var patientList = _genericpatient.GetList().OrderByDescending(x => x.ArrivalDate);
 
             return View(patientList);
         }
@@ -52,7 +52,17 @@ namespace HospitalManagementSystem.Controllers
         [HttpPost]
         public ActionResult<Patient> Create(Patient patient)
         {
-            patient.ArrivalDate = DateTime.Now;
+            var number = _genericpatient.GetList().Last().SerialNumber;
+            number++;
+            patient.SerialNumber += number;
+
+            
+
+            DateTime date = DateTime.Now;
+            var shortDate = date.Date;
+            patient.ArrivalDate = shortDate;
+            
+            
             if (ModelState.IsValid)
             {
                 _genericpatient.Create(patient);

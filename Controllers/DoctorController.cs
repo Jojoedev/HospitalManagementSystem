@@ -39,7 +39,7 @@ namespace HospitalManagementSystem.Controllers
 
             _hospitalnterface.lookUp();
             _patientType.lookUp();
-            var patient = _patientGeneric.GetList();
+            var patient = _patientGeneric.GetList().OrderByDescending(x => x.ArrivalDate);
             return View(patient);
         }
 

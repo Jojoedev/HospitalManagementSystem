@@ -6,12 +6,17 @@
 
 <h3>Nurse Page for capturing Patients' Vitals</h3>
 
+
+
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-outline-primary">Create New</a>
 </p>
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SerialNumber)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.GenderId)
             </th>
@@ -56,7 +61,12 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+
+            <tr>
+             
+                <td>
+                        @Html.DisplayFor(modelItem => item.SerialNumber)
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Gender.Sex)
             </td>
@@ -98,10 +108,28 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                @Html.ActionLink("Details", "Details", new { }) |
+                
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+               
+    <script type="text/javascript" >
+
+
+                document.addEventListener("DOMContentLoaded", (number) => {
+                    var number = 0;
+                    number++;
+                    console.log(number);
+
+                    document.getElementById('SerialNumber').innerText = number;
+                    
+                });
+
+                
+</script>
+
+                
