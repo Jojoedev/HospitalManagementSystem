@@ -6,14 +6,14 @@ namespace HospitalManagementSystem.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "S/N")]
-        public int SerialNumber { get; set; }
-
+        
         [Display(Name = "FName")]
         public string? FirstName { get; set; }
 
         [Display(Name = "LName")]
         public string?  LastName { get; set; }
+
+        [DataType(DataType.Date)]
         public DateTime DOB { get; set; }
 
         public int Weight { get; set; }

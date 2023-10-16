@@ -5,23 +5,21 @@
 }
 
 <h3>Nurse Page for capturing Patients' Vitals</h3>
-
-
-
 <p>
     <a asp-action="Create" class="btn btn-outline-primary">Create New</a>
 </p>
+
+
+    
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
+            
             <th>
-                @Html.DisplayNameFor(model => model.SerialNumber)
+                @Html.DisplayNameFor(model => model.Gender.Sex)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.GenderId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PatientTypeId)
+                @Html.DisplayNameFor(model => model.PatientType.Type)
             </th>
            @* <th>
                 @Html.DisplayNameFor(model => model.Id)
@@ -64,9 +62,7 @@
 
             <tr>
              
-                <td>
-                        @Html.DisplayFor(modelItem => item.SerialNumber)
-                </td>
+                
             <td>
                 @Html.DisplayFor(modelItem => item.Gender.Sex)
             </td>
@@ -114,10 +110,11 @@
         </tr>
 }
     </tbody>
-</table>
+    </table>
+
 
                
-    <script type="text/javascript" >
+   @*  <script type="text/javascript" >
 
 
                 document.addEventListener("DOMContentLoaded", (number) => {
@@ -130,6 +127,6 @@
                 });
 
                 
-</script>
+</script> *@
 
                 

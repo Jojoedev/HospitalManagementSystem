@@ -4,6 +4,7 @@ using HospitalManagementSystem.AppDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HospitalManagementSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231014191645_NewMigrationForSN")]
+    partial class NewMigrationForSN
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -147,7 +149,7 @@ namespace HospitalManagementSystem.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("GenderId")
+                    b.Property<int?>("GenderId")
                         .HasColumnType("int");
 
                     b.Property<string>("LastName")
@@ -156,7 +158,7 @@ namespace HospitalManagementSystem.Migrations
                     b.Property<string>("NameOfDoctor")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PatientTypeId")
+                    b.Property<int?>("PatientTypeId")
                         .HasColumnType("int");
 
                     b.Property<int>("Pulse")
@@ -341,15 +343,11 @@ namespace HospitalManagementSystem.Migrations
                 {
                     b.HasOne("HospitalManagementSystem.Models.Gender", "Gender")
                         .WithMany()
-                        .HasForeignKey("GenderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GenderId");
 
                     b.HasOne("HospitalManagementSystem.Models.PatientType", "PatientType")
                         .WithMany()
-                        .HasForeignKey("PatientTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PatientTypeId");
 
                     b.Navigation("Gender");
 

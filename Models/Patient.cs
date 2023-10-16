@@ -6,12 +6,12 @@ namespace HospitalManagementSystem.Models
     {
 
         [Display(Name = "Gender")]
-        public int? GenderId { get; set; }
-        public virtual Gender? Gender { get; set; }
+        public int GenderId { get; set; }
+        public Gender? Gender { get; set; }
 
         [Display(Name="Type")]
-        public int? PatientTypeId { get; set; }
-        public virtual PatientType? PatientType { get; set; }
+        public int PatientTypeId { get; set; }
+        public PatientType? PatientType { get; set; }
 
 
     }

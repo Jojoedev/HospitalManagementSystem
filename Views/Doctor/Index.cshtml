@@ -13,10 +13,7 @@
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.SerialNumber)
-            </th>
-            <th>
+              <th>
                 @Html.DisplayNameFor(model => model.Gender.Sex)
             </th>
 
@@ -71,12 +68,10 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+           
             <td>
-                @Html.DisplayFor(modelItem => item.SerialNumber)
-            </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Gender.Sex)
-                </td>
+               @Html.DisplayFor(modelItem => item.Gender.Sex)
+           </td>
 
             <td>
                 @Html.DisplayFor(modelItem => item.PatientType.Type)

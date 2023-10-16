@@ -44,9 +44,6 @@ namespace HospitalManagementSystem.Service
 
         }
 
-        /*public void Update(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }*/
+        
     }
 }
